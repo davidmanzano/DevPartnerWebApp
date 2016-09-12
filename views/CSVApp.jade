@@ -1,0 +1,39 @@
+//extends layout
+html
+    head
+        script(src='/javascripts/nprogress.js')
+        link(rel='stylesheet', href='/stylesheets/nprogress.css')
+        // Latest compiled and minified CSS
+        link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+        link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
+        // jQuery library
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+        // Latest compiled JavaScript
+        script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+        script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+        script(type='text/javascript', src='/javascripts/CSVApp.js')
+        script(type='text/javascript', src='/javascripts/jquery.csv.js')
+        script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js')
+        link(rel='stylesheet' href='/stylesheets/userlist.css')
+        link(rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css')
+        script(type='text/javascript', src='https://www.gstatic.com/charts/loader.js')
+        
+    body#body(style="background-color: #F5F5F5")
+        
+        
+        .col-xs-12(style='height:20px;')
+        button#backButton.btn.btn-default.btn-lg(type='submit', onclick="backButton()") Back
+        form#formCreateUser(name="logout",method="get",action="/logout")
+          button#backButton.btn.btn-default.btn-lg(type='submit', style='position: absolute;top: 20px;right: 0px;') Logout
+        .row.text-center
+          .container
+            #wumbo.jumbotron(style="background-color: #4682B4; color: white; margin-top: 10px; font-family: 'Varela Round', sans-serif;")
+              h1#fileName(style="font-family: 'Varela Round', sans-serif") 
+              p
+                | A simple table and chart view of your processed data
+
+            table#dataTable.display(style='autoWidth:false')
+            #chart_div
+            
+            #curve_chart(style='width: 100%; height: 850px')
+            

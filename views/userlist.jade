@@ -1,0 +1,91 @@
+//extends layout
+html
+	head
+		// Latest compiled and minified CSS
+		script(src='/javascripts/nprogress.js')
+		link(rel='stylesheet', href='/stylesheets/nprogress.css')
+		link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+		link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
+		// jQuery library
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		// Latest compiled JavaScript
+		script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+		script(type='text/javascript', src='/javascripts/Userlist.js')
+		script(type='text/javascript', src='/javascripts/jquery.csv.js')
+		link(rel='stylesheet' href='/stylesheets/userlist.css')
+
+	body#body(style="background-color: #F5F5F5")
+		.container
+			.row.text-center
+				.container
+					#wumbo.jumbotron(style="background-color: #4682B4; color: white; margin-top: 10px; font-family: 'Varela Round', sans-serif;")
+						h1#title(style="font-family: 'Varela Round', sans-serif") #{user.username}'s Uploaded Files
+						p
+							| Upload files for processing or remove them as seen fit
+			.row.text-center
+				.col-xs-12(style='height:20px;')
+				.col-md-offset-2.col-md-2.col-xs-offset-1.col-xs-3
+					span#fileButton.btn.btn-default.btn-file(style="width:100%")
+						span.glyphicon.glyphicon-folder-open
+						&nbsp;&nbsp;Browse...
+						input#myFile(type='file', onchange='filePicked(event)')
+				.col-md-6.col-xs-7
+					input#fileName.form-control(type='text', disabled='')
+			.row
+				.col-xs-12(style='height:20px;')
+				.col-md-offset-5.col-md-2.col-xs-4.col-xs-offset-4
+					button#upload.btn.btn-default.text-center(type='addNew', disabled='', onclick="uploadPress()", style="width:100%") Upload&nbsp;&nbsp;
+						span.glyphicon.glyphicon-upload
+
+				.col-xs-12(style='height:30px;')
+           
+				table.table.table-hover
+					thead
+						tr
+							th(width='25%') Date
+							th(width='40%') Name
+							th(width='25%') Status
+							th(width='10%') Remove
+						tbody#dataTableBody
+
+			#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+				.modal-dialog
+					.modal-content
+						.modal-body.text-center
+							b Change Password
+						.modal-body Enter Old Password:
+							.row.text-center.submitpad
+								input#inputOldUserPwd.form-control(type="password", style="text-align: center; width: 80%; margin-left: 10%", placeholder="Old Password", name="oldpassword")
+						.modal-body Enter New Password:
+							.row.text-center.submitpad
+								input#inputUserPwd.form-control(type="password", style="text-align: center;width: 80%; margin-left: 10%", placeholder="New Password", name="newpassword")
+							.row.text-center.submitpad
+								input#inputConPwd.form-control(type="password", style="text-align: center;width: 80%; margin-left: 10%", placeholder="Confirm New Password", name="confirmPassword")
+						.modal-header.text-center
+								button#confirmchangepw.btn.btn-default(type='button') Confirm
+						.modal-header.text-center
+							b Delete User
+							.row.text-center
+								button.btn.btn-danger(type='button', data-toggle="modal", data-target="#confirmModal") Delete User
+						.modal-footer
+							button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+			#confirmModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='confirmModalLabel', aria-hidden='true', style='top: 20%;')
+				.modal-dialog(style='width: 20%;')
+					.modal-content
+						.modal-header Are you sure you wish to DELETE this user? (All stored data will be gone!)
+						.modal-footer
+							button#deleteUser.btn.btn-danger(type='button', data-dismiss='modal') Delete User
+							button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+
+			form#formCreateUser(name="logout",method="get",action="/logout")
+				button#backButton.btn.btn-default.btn-lg(type='submit', style='position: absolute;top: 20px;right: 20px; height: 50px') Logout
+
+			button#settingsButton.btn.btn-default.btn-lg(type='submit', style='position: absolute; top: 20px;right: 120px; height: 50px', data-toggle="modal", data-target="#myModal")
+				span.glyphicon.glyphicon-cog
+
+
+
+
+
